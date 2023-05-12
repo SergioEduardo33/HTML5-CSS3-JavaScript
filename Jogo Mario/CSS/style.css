@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.game-board{
+    width: 100%;
+    height: 500px;
+    border-bottom: 15px solid #007A04;
+    margin: 0 auto;
+    position: relative; /*Para as imagens não atravessarem o quadro game-board*/
+    overflow: hidden;/*tudo que sair do quadro desaparece(assim o túnel some quando sai da tela*/
+    background: linear-gradient(#B7CEEB,#E0F6FF);
+}
+.pipe{
+    position: absolute; /*para as imagens respeitarem o espaço uma das outras*/
+    bottom: 0; /*para o tubo ficar no chão*/
+    width: 70px; 
+    animation: pipe-animation 1.5s infinite linear;
+
+    /*chamando a keyframe que fizemos em um tempo de tela de 2 segundos infinitamente, linear para uma velocidade constante*/
+    
+}
+
+.mario{
+    position: absolute;
+    bottom: 0px;
+    width: 160px;
+
+    
+}
+.jump{
+    /*tem uma classe própria já que essa classe só será chamada quando ocorrer o comando pular(jump)*/
+    animation: jump 500ms  ease-out;
+    /*chamando o keyframe tempo de pulo de 500ms easy-out para pular e cair com mais suavidade */
+}
+.clouds{
+    position: absolute;
+    width: 400px;
+    animation: clouds-animation 20s infinite linear;
+}
+
+
+@keyframes pipe-animation {
+    from{
+        right: -80px;/*usamos a largura da imagem negativa para dar a impressão de que ela está saindo da tela principal e entrando no game-board*/
+    }
+    to{
+        right: 100%;
+    }
+    /*Forma de fazer a imagem do cano dar a impressão de se mover na tela*/
+}
+
+@keyframes jump {
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom: 180px;
+    }
+    50%{
+        bottom: 180px;
+    }
+    60%{
+        bottom: 180px;
+    }
+    100%{
+        bottom: 0;
+    }
+    /*0% (começo da animação) 
+    50% (meio da animação)
+    100% (fim da animação)
+    40% e 60% (para ele se manter no ar por mais tempo)*/
+}
+
+@keyframes clouds-animation {
+    from{
+        right: -400px;
+    }
+    to{
+        right: 100%;
+    }
+}
